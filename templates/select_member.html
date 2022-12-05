@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+  送信先メンバーの選択
+{% endblock %}
+
+{% block main %}
+<table class="table">
+  <thead>
+    <tr>
+      <td scope="col">ユーザー名</td>
+      <td scope="col">アクション</td>
+    </tr>
+  </thead>
+  <tbody>
+    {% for member in members %}
+    <tr>
+      <td>{{ member.name }}</td>
+      <td>
+        <a href="{{ url_for('make_task', id=member.id)}}"class="btn btn-primary">選択</a>                    
+      </td>
+    </tr>
+    {% endfor%}
+  </tbody>
+</table>
+{% endblock %}

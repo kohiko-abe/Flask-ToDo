@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+  タスク作成
+{% endblock %}
+
+{% block main %}
+    <form action="/make_task/{{id}}" method="post">
+        <div class="mb-3">
+            <input autofocus class="form-control mx-auto w-auto" id="taskname" name="taskname" placeholder="タスク名" type="text">
+        </div>
+        <div class="mb-3">
+          <input autofocus class="form-control mx-auto w-auto" id="detail" name="detail" placeholder="タスク名" type="text">
+        </div>
+        <div class="mb-3">
+          <input autofocus class="form-control mx-auto w-auto" id="limit_date" name="limit_date" placeholder="期日" type="date">
+        </div>
+        <div class="mb-3">
+          <input autofocus class="form-control mx-auto w-auto" id="limit_time" name="limit_time" placeholder="時間" type="time">
+        </div>
+        <button class="btn btn-primary" type="submit">作成</button>
+    </form>
+{% endblock %}

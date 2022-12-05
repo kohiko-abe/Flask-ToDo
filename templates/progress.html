@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}
+  
+{% endblock %}
+  進捗確認
+{% block main %}
+
+    {% if session["user_id"] %}
+      <p>未完了タスク一覧</p>
+      <table class="table">
+        <thead>
+          <tr>
+            <td scope="col">タイトル</td>
+            <td scope="col">詳細</td>
+            <td scope="col">受信者</td>
+            <td scope="col">期限</td>
+          </tr>
+        </thead>
+        <tbody>
+            {% for not_finished_task in not_finished_tasks %}{% set not_finished_tasks_loop = loop %}
+            {% for not_finished_user in not_finished_users %}{% if loop.index==not_finished_tasks_loop.index %}
+            <tr>
+              <td>{{ not_finished_task.name }}</td>
+              <td>{{ not_finished_task.detail }}</td>
+              <td>{{ not_finished_user.name }}</td>
+              <td>{{ not_finished_task.limit }}</td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+            {% endfor%}
+        </tbody>
+      </table>
+      <p>完了済みタスク一覧</p>
+      <table class="table">
+        <thead>
+          <tr>
+            <td scope="col">タイトル</td>
+            <td scope="col">詳細</td>
+            <td scope="col">受信者</td>
+            <td scope="col">期限</td>
+          </tr>
+        </thead>
+        <tbody>
+            {% for finished_task in finished_tasks %}{% set finished_tasks_loop = loop %}
+            {% for finished_user in finished_users %}{% if loop.index==finished_tasks_loop.index %}
+            <tr>
+              <td>{{ finished_task.name }}</td>
+              <td>{{ finished_task.detail }}</td>
+              <td>{{ finished_user.name }}</td>
+              <td>{{ finished_task.limit }}</td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+            {% endfor%}
+        </tbody>
+      </table>
+
+
+
+
+
+    {% else %}
+      <!--
+        ここにアプリケーションの説明を記載する
+      -->
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+  グループ選択
+{% endblock %}
+
+{% block main %}
+<table class="table">
+  <thead>
+    <tr>
+      <td scope="col">グループ名</td>
+      <td scope="col">アクション</td>
+    </tr>
+  </thead>
+  <tbody>
+    {% for group in groups %}
+    <tr>
+      <td>{{ group.name }}</td>
+      <td>
+        <a href=" {{ url_for('select_member', id=group.id)}} " class="btn btn-primary">選択</a>           
+      </td>
+    </tr>
+    {% endfor%}
+  </tbody>
+</table>
+{% endblock %}

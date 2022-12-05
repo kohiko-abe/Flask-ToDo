@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}
+  やっといて
+{% endblock %}
+
+{% block main %}
+
+    {% if session["user_id"] %}
+      <P>MY task 一覧</P>
+      <table class="table">
+          <thead>
+              <tr>
+                <td scope="col">タイトル</td>
+                <td scope="col">詳細</td>
+                <td scope="col">送信者</td>
+                <td scope="col">期限</td>
+                <td scope="col"></td>
+              </tr>
+          </thead>
+          <tbody>
+            {% for task in tasks %}{% set tasks_loop = loop %}
+            {% for sent_user in sent_users %}{% if loop.index==tasks_loop.index %}
+            <tr>
+              <td>{{ task.name }}</td>
+              <td>{{ task.detail }}</td>
+              <td>{{ sent_user.name }}</td>
+              <td>{{ task.limit }}</td>
+              <td>
+                <a href="{{ url_for('task_delete', id=task.id)}}"class="btn btn-primary">完了</a> 
+              </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+            {% endfor%}
+          </tbody>
+      </table>
+    {% else %}
+      <!--
+        ここにアプリケーションの説明を記載する
+      -->
+    {% endif %}
+{% endblock %}

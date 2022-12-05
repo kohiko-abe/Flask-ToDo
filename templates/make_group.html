@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+  新規グループ作成
+{% endblock %}
+
+{% block main %}
+    <form action="/make_group" method="post">
+        <div class="mb-3">
+            <input autofocus class="form-control mx-auto w-auto" id="groupname" name="groupname" placeholder="グループ名" type="text">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" name="password"  id="password" placeholder="参加パスワード" type="password">
+        </div>
+        <button class="btn btn-primary" type="submit">作成</button>
+    </form>
+{% endblock %}
